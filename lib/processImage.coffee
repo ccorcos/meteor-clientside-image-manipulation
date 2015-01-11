@@ -1,5 +1,5 @@
 
-@processImage = (imageFile, maxWidth, maxHeight, callback) ->
+processImage = (imageFile, maxWidth, maxHeight, callback) ->
 
   canvas = document.createElement('canvas')
   ctx = canvas.getContext("2d")
