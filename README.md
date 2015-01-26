@@ -18,7 +18,7 @@ Then if you want to use it with [CollectionFS](https://github.com/CollectionFS/M
         file = e.target.files[0]
         if not file? then return
 
-        # processImage(file, maxWidth, maxHeight, callback(dataURI))
+        # processImage(file or blob, maxWidth, maxHeight, callback(dataURI))
         data = processImage file, 300, 300, (data) ->
           img = new FS.File(data)
 
