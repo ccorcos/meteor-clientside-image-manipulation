@@ -30,3 +30,6 @@ Then if you want to use it with [CollectionFS](https://github.com/CollectionFS/M
             if err
               console.log err
 
+You can also fix the orientation without adjusting the image size by passing only the file and the callback.
+
+    data = processImage file, (data) ->
