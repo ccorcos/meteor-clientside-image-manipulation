@@ -1,5 +1,15 @@
 
-processImage = (imageFile, maxWidth, maxHeight, callback) ->
+# processImage = (imageFile, maxWidth, maxHeight, callback) ->
+processImage = (imageFile, rest...) ->
+  console.log rest, rest.length
+  callback = rest[rest.length-1]
+  if not _.isFunction(callback) then console.log "ERROR: you need to pass a callback function to processImage"
+
+  maxHeight = undefined
+  maxWidth = undefined
+  if rest.length is 3
+    maxWidth = rest[0]
+    maxHeight = rest[1]
 
   canvas = document.createElement('canvas')
   ctx = canvas.getContext("2d")
@@ -38,14 +48,16 @@ processImage = (imageFile, maxWidth, maxHeight, callback) ->
       else
         width = img.width
         height = img.height
-      if width / maxWidth > height / maxHeight
-        if width > maxWidth
-          height *= maxWidth / width
-          width = maxWidth
-      else
-        if height > maxHeight
-          width *= maxHeight / height
-          height = maxHeight
+
+      if maxWidth and maxHeight
+        if width / maxWidth > height / maxHeight
+          if width > maxWidth
+            height *= maxWidth / width
+            width = maxWidth
+        else
+          if height > maxHeight
+            width *= maxHeight / height
+            height = maxHeight
 
       canvas.width = width
       canvas.height = height
