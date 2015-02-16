@@ -1,7 +1,6 @@
 
 # processImage = (imageFile, maxWidth, maxHeight, callback) ->
 processImage = (imageFile, rest...) ->
-  console.log rest, rest.length
   callback = rest[rest.length-1]
   if not _.isFunction(callback) then console.log "ERROR: you need to pass a callback function to processImage"
 
