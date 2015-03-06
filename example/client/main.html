@@ -1,0 +1,20 @@
+<body>
+  {{>main}}
+</body>
+
+<template name="main">
+  <input type='file'>
+  <br>
+  <br>
+  {{#if original}}
+    original
+    <br>
+    <img src="{{original}}">
+  {{/if}}
+  <br>
+  {{#if processed}}
+    processed
+    <br>
+    <img src="{{processed}}">
+  {{/if}}
+</template>
