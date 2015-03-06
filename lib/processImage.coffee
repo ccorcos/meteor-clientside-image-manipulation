@@ -79,19 +79,21 @@ processImage = (imageFile, rest...) ->
 
       # process into an image
       pixels = ctx.getImageData(0, 0, canvas.width, canvas.height)
-      r = undefined
-      g = undefined
-      b = undefined
-      i = undefined
-      py = 0
 
-      for py in [0...pixels.height]
-        for px in [0...pixels.width]
-          i = (py * pixels.width + px) * 4
-          r = pixels.data[i]
-          g = pixels.data[i + 1]
-          b = pixels.data[i + 2]
-          pixels.data[i + 3] = 0  if g > 100 and g > r * 1.35 and g > b * 1.6
+      # filter out the greenscreen!
+      # r = undefined
+      # g = undefined
+      # b = undefined
+      # i = undefined
+      # py = 0
+
+      # for py in [0...pixels.height]
+      #   for px in [0...pixels.width]
+      #     i = (py * pixels.width + px) * 4
+      #     r = pixels.data[i]
+      #     g = pixels.data[i + 1]
+      #     b = pixels.data[i + 2]
+      #     pixels.data[i + 3] = 0  if g > 100 and g > r * 1.35 and g > b * 1.6
 
       ctx.putImageData pixels, 0, 0
       data = canvas.toDataURL("image/png")
