@@ -6,10 +6,15 @@ processImage = (imageFile, rest...) ->
 
   maxHeight = undefined
   maxWidth = undefined
-  if rest.length is 3
+  quality = undefined
+  
+  if rest.length is 3 or 4
     maxWidth = rest[0]
     maxHeight = rest[1]
-
+    if rest.length is 4
+      quality = rest[2]
+    
+    
   canvas = document.createElement('canvas')
   ctx = canvas.getContext("2d")
 
@@ -96,8 +101,11 @@ processImage = (imageFile, rest...) ->
       #     pixels.data[i + 3] = 0  if g > 100 and g > r * 1.35 and g > b * 1.6
 
       ctx.putImageData pixels, 0, 0
-      data = canvas.toDataURL("image/png")
-
+      
+      if quality
+      	data = canvas.toDataURL("image/jpeg", quality)
+      else
+        data = canvas.toDataURL("image/jpeg")
       
       callback(data)
 
