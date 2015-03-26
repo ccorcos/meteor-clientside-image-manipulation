@@ -33,3 +33,10 @@ Then if you want to use it with [CollectionFS](https://github.com/CollectionFS/M
 You can also fix the orientation without adjusting the image size by passing only the file and the callback.
 
     data = processImage file, (data) ->
+
+You can also pass [quality parameter](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL) which will be the 3rd argument is you give a size
+
+    data = processImage file, 300, 300, 0.5, (data) ->
+      # ...
+
+This will give you half quality.
