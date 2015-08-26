@@ -12,6 +12,8 @@ All of the code in this package comes from [this tutorial](http://chariotsolutio
 
 Then if you want to use it with [CollectionFS](https://github.com/CollectionFS/Meteor-CollectionFS), all you have to do is pipe things through the `processImage` function:
 
+**Coffeescript:**
+
 
     Template.upload.events
       'change #image-upload': (e,t) ->
@@ -29,6 +31,34 @@ Then if you want to use it with [CollectionFS](https://github.com/CollectionFS/M
           Images.insert img,  (err, fileObj) ->
             if err
               console.log err
+              
+
+**Javascript:**
+
+
+    Template.upload.events({
+      'change #image-upload': function(e, t) {
+        var data, file;
+        file = e.target.files[0];
+        if (file == null) {
+          return;
+        }
+        return data = processImage(file, 300, 300, function(data) {
+          var img;
+          img = new FS.File(data);
+          img.metadata = {
+            date: Date.now(),
+            ownerId: Meteor.userId()
+          };
+          return Images.insert(img, function(err, fileObj) {
+            if (err) {
+              return console.log(err);
+            }
+          });
+        });
+      }
+    });
+
 
 You can also fix the orientation without adjusting the image size by passing only the file and the callback.
 
