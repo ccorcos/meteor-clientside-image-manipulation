@@ -1,8 +1,8 @@
-# Meteor Clientside Image Manipulation
+# Meteor Clientside Image Manipulation [MAINTAINER WANTED]
 
-This package was born out of the necessity to process images before uploading them to the server. 
+This package was born out of the necessity to process images before uploading them to the server.
 
-One problem is that browsers do not render images with the correct orientation based on EXIF metadata. Another problem this package solves is reducing the size of images before uploading. 
+One problem is that browsers do not render images with the correct orientation based on EXIF metadata. Another problem this package solves is reducing the size of images before uploading.
 
 All of the code in this package comes from [this tutorial](http://chariotsolutions.com/blog/post/take-and-manipulate-photo-with-web-page/).
 
@@ -31,7 +31,7 @@ Then if you want to use it with [CollectionFS](https://github.com/CollectionFS/M
           Images.insert img,  (err, fileObj) ->
             if err
               console.log err
-              
+
 
 **Javascript:**
 
